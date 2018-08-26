@@ -1,0 +1,37 @@
+{
+  "name": "generator",
+  "version": "1.0.0",
+  "description": "Generates folders of templates with handlebars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js",
+    "babel": "babel-node "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clayboyd/generator.git"
+  },
+  "author": "Clay Boyd <clayeboyd+testing@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clayboyd/generator/issues"
+  },
+  "homepage": "https://github.com/clayboyd/generator#readme",
+  "dependencies": {
+    "glob": "7.1.2",
+    "handlebars": "4.0.11",
+    "lodash": "4.17.10",
+    "mkdirp": "0.5.1",
+    "path": "0.12.7",
+    "underscore": "^1.9.1",
+    "underscore.string": "3.3.4"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-es2017": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "babel-register": "6.26.0"
+  }
+}

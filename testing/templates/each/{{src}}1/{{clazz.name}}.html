@@ -1,0 +1,14 @@
+<html>
+<body>
+    <!-- File name is {{FILE_NAME}} -->
+    <!-- Template name is {{TEMPLATE_NAME}} -->
+    <div>
+    This is def {{title}}
+    </div>
+    {{#each clazz.properties}}
+    <label>{{startCase name}}
+        <input type="text" value={ {{lowerFirst ../clazz.name}}.{{name}} } >
+    </label>
+    {{/each}}
+</body>
+</html>
