@@ -30,9 +30,11 @@ function readFileP( fname ) {
         })
 }
 
-function globP( path ) {
+function globP( path, options ) {
+    options = options || {}
+    options.nodir = true;
     return new Promise((resolve, reject) => {
-        glob(path, (err, files) => {
+        glob(path, options, (err, files) => {
             return err ? reject(err) : resolve(files)
         })
     })

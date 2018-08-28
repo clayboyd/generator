@@ -31,8 +31,8 @@ let promises =  m.classes.map( clz => {
     let ctx = Object.assign({}, context);
     ctx.clazz = clz;
     console.log(JSON.stringify(ctx, null, 2))
-    return gen('./testing/templates/each', './testing/destination', ctx);
+    return gen('./testing/templates/each', '../uut', ctx);
 });
 
-gen('./testing/templates/once','./testing/destination', context)
+gen('./testing/templates/once','../uut', context)
 .then( Promise.all( promises ));

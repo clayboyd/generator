@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
 import fs from 'fs'
-import _ from 'underscore'
+import _ from 'lodash'
 import helpers from './helpers'
 
 // This caches the compiled templates, saves them by filename

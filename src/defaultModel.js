@@ -11,6 +11,13 @@ import _ from 'lodash'
                      name: 'un-capitalized name',
                      type: 'all lower case type',
                      required: boolean,
+                     ui: {
+                         type: "hidden|text|checkbox|radio|select"
+                         value: "string of result"
+                         label: "String of resuls"
+                         values: [ 'stg1','stg2'],
+                         labels: ['stg1','stg2']
+                     }
                  }
              ]
          }
@@ -27,19 +34,37 @@ import _ from 'lodash'
  * 
 */
 
+const uiTypes = {
+    string: 'text',
+    html: 'textarea',
+    textarea: 'textarea',
+    boolean: 'checkbox',
+    date: 'date',
+    password: 'password'
+}
+
+function updateUi( prop ) {
+    prop.ui = prop.ui || {}
+    prop.ui.type = prop.ui.type || uiTypes[prop.type]
+    prop.ui.label = prop.ui.label || _.startCase(prop.name)
+    prop.ui.hidden = prop.hidden || prop.ui.hidden
+    prop.ui.private = prop.private || prop.ui.private
+    return prop;
+}
 /**
  * Create a default property model from a string
  * @param {String} name 
  */
 function defaultPropFromName( name ) {
-    return {name: name, type: 'string'}
+    let prop = {name: name, type: 'string'}
+    return updateUi( prop )
 }
 
 function defaultPropFromObject( name, obj ) {
     let dest = Object.assign({}, obj);
     dest.type = _.toLower(dest.type || 'string')
     dest.name = _.lowerFirst(name)
-    return dest
+    return updateUi(dest)
 }
 
 function updateProperties( props ) {
