@@ -6,13 +6,6 @@ let model = {
             name: 'User',
             properties: [
                 {
-                    id: {
-                        ui: {
-                            hidden: true
-                        }
-                    }
-                },
-                {
                     email: {
                         type: 'string',
                         required: true
@@ -44,15 +37,12 @@ let model = {
         },
         {
             name: 'Address',
-            properties: [ "id", "street1",'street2','city','state','zip','country' ]
+            properties: [ "street1",'street2','city','state','zip','country' ]
         },
         {
             name: 'Example',
             properties: [
                 {
-                    id: {
-                        hidden: true
-                    },
                     password: {
                         private: true,
                         type: 'password'
@@ -66,22 +56,23 @@ let model = {
                     radio: {
                         ui: {
                             type: 'radio',
-                            values: ['first','second','third'],
-                            labels: ['First Radio','Second','Third one']
+                            options: {
+                                values: ['first','second','third'],
+                                labels: ['First Radio','Second','Third one']    
+                            }
                         }
                     },
                     select: {
                         ui: {
                             type: 'select',
-                            values: ['first','second','third'],
-                            labels: ['First Select','Second','Third one']
+                            options: {
+                                values: ['first','second','third'],
+                                labels: ['First Select','Second','Third one']    
+                            }
                         }
                     },
                     date: {
                         type: 'date',
-                        ui: {
-                            type: 'date'
-                        }
                     },
                     html: {
                         ui: {
@@ -100,5 +91,7 @@ let model = {
 
     ]
 }
+
+module.exports = model
 
 export default model

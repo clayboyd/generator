@@ -20,6 +20,8 @@ Handlebars.registerHelper('lowerSingular', (stg) => pluralize.singular(_.lowerFi
 
 Handlebars.registerHelper('stringify', (p) => JSON.stringify(p,2))
 
+Handlebars.registerHelper('stringifyMultiline', (p) => JSON.stringify(p,null, 2))
+
 Handlebars.registerHelper('equal', (first, second) => first === second)
 
 Handlebars.registerHelper('notEqual', (first, second) => first !== second)

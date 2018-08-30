@@ -2,6 +2,7 @@ import Handlebars from 'handlebars'
 import fs from 'fs'
 import _ from 'lodash'
 import helpers from './helpers'
+import utils from './utils'
 
 // This caches the compiled templates, saves them by filename
 
@@ -17,24 +18,35 @@ function transform( template, context ) {
 function getTemplate( fname ) {
     return new Promise( (resolve, reject) => {
         if (fname in templates) {
-            console.log(`cache hit with ${fname}`)
-            return resolve( templates[fname] )
+            // console.log(`cache hit with ${fname}`)
+            resolve( templates[fname] )
         }
-        fs.readFile( fname, (err, data) => {
-            console.log(`called readfile with ${fname}`)
-            if (err) return reject(err)
-            templates[fname] = Handlebars.compile( data.toString() );
-            return resolve(templates[fname])
-        })
+        else {
+            // console.log(`called readfile with ${fname}`)
+            utils.readFileP( fname )
+                .then( data => {
+                    const template = Handlebars.compile( data.toString() );
+                    if (!templates[fname]) {
+                        templates[fname] = template
+                    }
+                    resolve( template )
+                })
+        }
     })
+}
+
+function all() {
+    return templates
 }
 
 export default {
     getTemplate,
-    transform
+    transform,
+    all
 }
 
 module.exports = {
     getTemplate,
-    transform
+    transform,
+    all
 }
